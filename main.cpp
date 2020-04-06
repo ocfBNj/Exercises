@@ -29,7 +29,7 @@ void nthElement(RanIt first, RanIt nth, RanIt last) {
 	auto distance = std::distance(pivot, nth);
 
 	if (distance > 0)
-		nthElement(pivot, pivot + distance, last);
+		nthElement(pivot + 1, nth, last);
 	else if (distance < 0)
 		nthElement(first, nth, pivot);
 }
