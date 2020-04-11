@@ -8,11 +8,11 @@ int min, max;
 int res = std::numeric_limits<int>::max();
 
 bool isOK(int len) {
-	int count = 1; // ÒÆ×ßµÄÊ¯Í·
+	int count = 1; // ç§»èµ°çš„çŸ³å¤´
 	int curDis = 0;
 	int* pCur = dis;
 	while (curDis < l) {
-		curDis += len; // ¼ÙÉè¿ÉÒÔÐÐ×ß 
+		curDis += len; // å‡è®¾å¯ä»¥è¡Œèµ° 
 		int* pNext = std::lower_bound(pCur, dis + n, curDis);
 		count += (pNext - pCur) - 1;
 		if (count > m) return false;
@@ -37,7 +37,7 @@ int main() {
 		std::cin >> dis[i];
 		if (i > 0) {
 			int temp = dis[i] - dis[i - 1];
-			if (temp < res) res = temp; // ÕÒµ½×î¶ÌÌøÔ¾¾àÀë 
+			if (temp < res) res = temp; // æ‰¾åˆ°æœ€çŸ­è·³è·ƒè·ç¦» 
 		}
 	}
 	dis[n++] = std::numeric_limits<int>::max() - 1000000000;

@@ -1,1 +1,1 @@
-add_executable(Luogu P1065.cpp)
+add_executable(Luogu P1802.cpp)
