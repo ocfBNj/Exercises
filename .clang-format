@@ -1,0 +1,12 @@
+---
+Language: Cpp
+BasedOnStyle: Microsoft
+BreakBeforeBraces: Attach
+PointerAlignment: Left
+AlwaysBreakTemplateDeclarations: Yes
+UseTab: Never
+AllowShortIfStatementsOnASingleLine: WithoutElse
+AllowShortFunctionsOnASingleLine: Inline
+AllowShortLoopsOnASingleLine: true
+SortIncludes: false
+...

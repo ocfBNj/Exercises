@@ -9,11 +9,11 @@ int main() {
     int n;
     int num;
     std::cin >> n;
-    for(int i = 0; i < n; i++) {
+    for (int i = 0; i < n; i++) {
         std::cin >> num;
         if (!num) hasZero = true;
         sum += num;
-        
+
         if (sum != 0 && sum > res) res = sum;
         if (sum < 0) sum = 0;
     }
