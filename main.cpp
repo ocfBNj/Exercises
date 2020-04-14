@@ -24,14 +24,14 @@ inline RanIt partition(RanIt first, RanIt last) {
 }
 
 template <typename RanIt>
-void nthElement(RanIt first, RanIt nth, RanIt last) {
+void nth_element(RanIt first, RanIt nth, RanIt last) {
     auto pivot = partition(first, last);
     auto distance = std::distance(pivot, nth);
 
     if (distance > 0)
-        nthElement(pivot + 1, nth, last);
+        nth_element(pivot + 1, nth, last);
     else if (distance < 0)
-        nthElement(first, nth, pivot);
+        nth_element(first, nth, pivot);
 }
 
 int main() {
@@ -46,7 +46,7 @@ int main() {
     }
 
     auto begin = std::chrono::high_resolution_clock::now();
-    nthElement(arr, arr + k, arr + n);
+    nth_element(arr, arr + k, arr + n);
     auto time1 = std::chrono::high_resolution_clock::now() - begin;
 
     begin = std::chrono::high_resolution_clock::now();
@@ -55,6 +55,6 @@ int main() {
 
     std::cout << arr[k] << "\n";
     std::cout << arrCopy[k] << "\n";
-    std::cout << "nthElement: \t\t" << time1.count() << "ns\n";
+    std::cout << "nth_element: \t\t" << time1.count() << "ns\n";
     std::cout << "std::nth_element: \t" << time2.count() << "ns\n";
 }
