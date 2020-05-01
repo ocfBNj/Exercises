@@ -1,1 +1,1 @@
-add_executable(temp main.cpp)
+add_executable(temp 踩方格.cpp)

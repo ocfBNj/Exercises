@@ -5,7 +5,7 @@
 long long arr[1000001];
 long long n, m;
 
-// ����ֵ���ڵ���0��ʾ����������񣬴�ʱ���Ը��ߵ�h 
+// 返回值大于等于0表示可以完成任务，此时尝试更高的h 
 long long isOK(long long h) {
 	long long sum = 0;
 	for (long long i = 0; i < n; i++) {
