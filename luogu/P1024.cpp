@@ -22,8 +22,8 @@ int main() {
 	x1 = ((-2 * b) + std::sqrt((2 * b) * (2 * b) - 4 * (3 * a) * c)) / (2 * (3 * a));
 	x3 = ((-2 * b) - std::sqrt((2 * b) * (2 * b) - 4 * (3 * a) * c)) / (2 * (3 * a));
 
-	bool isD = cacl(x1) > cacl(x3); // µİ¼õ
-	// ÇóÖĞ¼äµÄ¸ù
+	bool isD = cacl(x1) > cacl(x3); // é€’å‡
+	// æ±‚ä¸­é—´çš„æ ¹
 	while (true) {
 		x2 = (x1 + x3) / 2;
 		double temp = cacl(x2);
@@ -46,7 +46,7 @@ int main() {
 	double min = -100;
 	double max = 100;
 
-	// Çóx1
+	// æ±‚x1
 	max = x2;
 	while (true) {
 		x1 = (max + min) / 2;
@@ -72,7 +72,7 @@ int main() {
 	max = 100;
 	// ---- 
 
-	// Çóx3
+	// æ±‚x3
 	min = x2;
 	while (true) {
 		x3 = (max + min) / 2;

@@ -1,7 +1,7 @@
-#include <iostream>
-#include <limits>
 #include <algorithm>
 #include <cmath>
+#include <iostream>
+#include <limits>
 
 struct Pos {
     double x;
@@ -20,8 +20,7 @@ inline double distance(int i, int j) {
 
     const Pos& src = arr[i];
     const Pos& des = arr[j];
-    saved_dis[i][j] = std::sqrt((src.x - des.x) * (src.x - des.x)
-                            + (src.y - des.y) * (src.y - des.y));
+    saved_dis[i][j] = std::sqrt((src.x - des.x) * (src.x - des.x) + (src.y - des.y) * (src.y - des.y));
     return saved_dis[i][j];
 }
 
@@ -39,8 +38,13 @@ inline bool test(unsigned short points, int i) {
 
 // 求：从点arr[curPoxI]出发，剩余的点为points，距离最短的结果
 double resolve(int curPosI, unsigned short points) {
-    if (points == 0) return 0;
-    if (saved_res[curPosI][points]) return saved_res[curPosI][points];
+    if (points == 0) {
+        return 0;
+    }
+
+    if (saved_res[curPosI][points]) {
+        return saved_res[curPosI][points];
+    }
 
     double ret = std::numeric_limits<double>::max();
 

@@ -13,9 +13,9 @@ void resolve(std::string&& cur_num) {
             count++;
         }
     }
-    
+
     resolve(cur_num + "0");
-    resolve(cur_num + "1"); 
+    resolve(cur_num + "1");
 }
 
 int main() {

@@ -1,12 +1,10 @@
 ---
+BasedOnStyle: LLVM
+IndentWidth: 4
+---
 Language: Cpp
-BasedOnStyle: Microsoft
-BreakBeforeBraces: Attach
 PointerAlignment: Left
-AlwaysBreakTemplateDeclarations: Yes
-UseTab: Never
-AllowShortIfStatementsOnASingleLine: WithoutElse
-AllowShortFunctionsOnASingleLine: Inline
-AllowShortLoopsOnASingleLine: true
-SortIncludes: false
-...
+AccessModifierOffset: -4
+AllowShortFunctionsOnASingleLine: Empty
+NamespaceIndentation: All
+ColumnLimit: 100

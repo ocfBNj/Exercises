@@ -1,1 +1,1 @@
-add_executable(Template LIS.cpp)
+add_executable(Template string_convert.cpp)

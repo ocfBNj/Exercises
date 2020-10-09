@@ -1,15 +1,19 @@
-#include <iostream>
 #include <algorithm>
+#include <iostream>
+#include <memory>
 
 int arr[500005];
 int n;
 
-// 7 5 3    4 2 1
 long long merge(int first, int mid, int last) {
     long long ret = 0;
     int count = last - first;
-    if (count < 2) return 0;
-    int* temp = new int[count];
+
+    if (count < 2) {
+        return 0;
+    }
+
+    auto temp = std::make_unique<int[]>(count);
     int i = first;
     int j = mid;
     int k = 0;
@@ -23,24 +27,29 @@ long long merge(int first, int mid, int last) {
         }
     }
 
-    if (i != mid) std::move(arr + i, arr + mid, temp + k);
-    else std::move(arr + j, arr + last, temp + k);
+    if (i != mid) {
+        std::copy(arr + i, arr + mid, temp.get() + k);
+    } else {
+        std::copy(arr + j, arr + last, temp.get() + k);
+    }
 
-    std::move(temp, temp + count, arr + first);
-    delete[] temp;
+    std::copy(temp.get(), temp.get() + count, arr + first);
 
     return ret;
 }
 
 long long resolve(int first, int last) {
-    if (last - first < 2) return 0;
+    if (last - first < 2) {
+        return 0;
+    }
 
     int mid = (last + first) / 2;
     long long ret = 0;
+
     ret += resolve(first, mid);
     ret += resolve(mid, last);
     ret += merge(first, mid, last);
-    
+
     return ret;
 }
 

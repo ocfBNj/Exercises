@@ -1,37 +1,42 @@
+#include <algorithm>
+#include <chrono>
 #include <iostream>
 #include <iterator>
-#include <algorithm>
 #include <random>
-#include <chrono>
 
 int n, k;
 int arr[5000005];
 int arrCopy[5000005];
 
-template <typename RanIt>
-inline RanIt partition(RanIt first, RanIt last) {
-    if (first == last) return first;
+template <typename RandIt>
+inline RandIt partition(RandIt first, RandIt last) {
+    if (first == last) {
+        return first;
+    }
 
-    --last; // pivot
-    RanIt it = first;
+    std::advance(last, -1); // pivot
 
-    for (; it != last; ++it) {
-        if (*it < *last) std::iter_swap(first++, it);
+    for (RandIt it = first; it != last; std::advance(it, 1)) {
+        if (*it <= *last) {
+            std::iter_swap(first, it);
+            std::advance(first, 1);
+        }
     }
 
     std::iter_swap(first, last);
     return first;
 }
 
-template <typename RanIt>
-void nth_element(RanIt first, RanIt nth, RanIt last) {
+template <typename RandIt>
+void nth_element(RandIt first, RandIt nth, RandIt last) {
     auto pivot = partition(first, last);
     auto distance = std::distance(pivot, nth);
 
-    if (distance > 0)
+    if (distance > 0) {
         nth_element(pivot + 1, nth, last);
-    else if (distance < 0)
+    } else if (distance < 0) {
         nth_element(first, nth, pivot);
+    }
 }
 
 int main() {

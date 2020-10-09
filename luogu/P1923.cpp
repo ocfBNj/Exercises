@@ -1,40 +1,39 @@
+#include <algorithm>
 #include <iostream>
 #include <iterator>
-#include <algorithm>
 
 int n, k;
 int arr[5000005];
 
-template <typename RandomAccessIterator>
-inline RandomAccessIterator partition(RandomAccessIterator first, RandomAccessIterator last) {
-	if (first == last) return first;
+template <typename RandIt>
+inline RandIt partition(RandIt first, RandIt last) {
+    if (first == last) {
+        return first;
+    }
 
-	std::advance(last, -1);
-	auto pivot = *last;
+    std::advance(last, -1); // pivot
 
-	for (auto it = first; it != last; ++it) {
-		if (*it < pivot) {
-			std::iter_swap(first, it);
-			++first;
-		}
-	}
+    for (RandIt it = first; it != last; std::advance(it, 1)) {
+        if (*it <= *last) {
+            std::iter_swap(first, it);
+            std::advance(first, 1);
+        }
+    }
 
-	std::iter_swap(first, last);
-	return first;
+    std::iter_swap(first, last);
+    return first;
 }
 
-// 找到第k小的数（下标从0开始）
-template <typename RandomAccessIterator>
-void randomSelect(RandomAccessIterator first, RandomAccessIterator last, int i) {
-	auto pivot = partition(first, last);
-	auto dis = std::distance(first, pivot) + 1; // pivot距离first的距离
-	if (dis == i + 1) {
-		return;
-	} else if (dis > i + 1) {
-		randomSelect(first, pivot, i);
-	} else {
-		randomSelect(pivot + 1, last, i - dis);
-	}
+template <typename RandIt>
+void nth_element(RandIt first, RandIt nth, RandIt last) {
+    auto pivot = partition(first, last);
+    auto distance = std::distance(pivot, nth);
+
+    if (distance > 0) {
+        nth_element(pivot + 1, nth, last);
+    } else if (distance < 0) {
+        nth_element(first, nth, pivot);
+    }
 }
 
 int main() {
@@ -45,6 +44,6 @@ int main() {
         std::cin >> arr[i];
     }
 
-    randomSelect(arr, arr + n, k);
+    nth_element(arr, arr + k, arr + n);
     std::cout << arr[k] << "\n";
 }
