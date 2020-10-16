@@ -18,7 +18,7 @@ def save_source_code(rid: str, save_path: str, language: str, save_encoding: str
 
     http_data = urllib.request.urlopen(req).read().decode('utf-8')
     ret = re.findall(
-        r'<script>window._feInjection = JSON\.parse\(decodeURIComponent\("(.*)"\)\);window._feConfigVersion=1589295780;<\/script>',
+        r'<script>window._feInjection = JSON\.parse\(decodeURIComponent\("(.*)"\)\);window._feConfigVersion=1602133664;<\/script>',
         http_data)
 
     if len(ret):
@@ -88,5 +88,8 @@ def start(uid: str, page: tuple):
 
 
 if __name__ == "__main__":
-    start(uid='180023', page=(1, 11))
+    if headers["cookie"] == "":
+        headers["cookie"] = input("输入cookie: ")
+
+    start(uid='180023', page=(1, 14))
     print("所有记录保存成功！")
